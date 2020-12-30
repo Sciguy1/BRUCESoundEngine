@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Cam The Making Man/Documents/Camron/eclipse-libraries/lwjgl-2.9.3/jar/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cam The Making Man/Documents/Camron/eclipse-libraries/lwjgl-release-3.2.3-custom/lwjgl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cam The Making Man/Documents/Camron/eclipse-libraries/lwjgl-release-3.2.3-custom/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cam The Making Man/Documents/Camron/eclipse-libraries/lwjgl-release-3.2.3-custom/lwjgl-natives-windows.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cam The Making Man/Documents/Camron/eclipse-libraries/lwjgl-release-3.2.3-custom/lwjgl-openal.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cam The Making Man/Documents/Camron/eclipse-libraries/lwjgl-release-3.2.3-custom/lwjgl-openal-natives-windows.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
