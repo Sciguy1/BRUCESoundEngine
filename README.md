@@ -9,7 +9,7 @@
 # Updates:
 
 12-30-2020 - A jar file for library integration will be coming soon.
------------------------------------------------------------------------------------------------
+
 Sources Used:
 https://lwjglgamedev.gitbooks.io/3d-game-development-with-lwjgl/content/chapter22/chapter22.html
 https://www.youtube.com/watch?v=BR8KjNkYURk
