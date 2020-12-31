@@ -237,6 +237,10 @@ public class SoundSource
 	 *  (No attenuation means setting rollOffFactor to 0)
 	 * @param referenceDistance - distance at which the gain will equal 1
 	 * @param maxDistance - distance that the source stops being heard
+	 * 
+	 * Can use this to "fade in" or "fade out" sources with a time factor, along with the elapse.
+	 * 
+	 * Again, this works best with mono sound files/sources.
 	 */
 	public void distanceAttenuation(int rollOffFactor, int referenceDistance, int maxDistance) {
 		
@@ -245,6 +249,7 @@ public class SoundSource
 		     AL10.alSourcef(sourceID, AL10.AL_REFERENCE_DISTANCE, referenceDistance);
 		     AL10.alSourcef(sourceID, AL10.AL_MAX_DISTANCE, maxDistance);
 		}
+
 	    
 	}
 
