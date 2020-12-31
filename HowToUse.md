@@ -17,3 +17,12 @@ Example code from testClass:
     
   These need to be called to "flush out" any additional resources, buffers, etc. OpenAL might be using/handling.
   (There is a warning that pops up right now, but ignore it for now.)
+  
+  
+  (Will try to fix this problem soon with either Maven or something similar)
+  Important Reference libraries/jars to include in your build path:
+  lwjgl.jar
+  lwjgl-natives-windows.jar (or whatever your OS might be)
+  lwjgl-openal.jar
+  lwjgl-openal-natives-windows.jar
+  
