@@ -1,3 +1,4 @@
+package bruce.sound;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
@@ -9,6 +10,7 @@ import java.util.Objects;
 
 import org.lwjgl.openal.AL;
 import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.AL11;
 import org.lwjgl.openal.ALC;
 import org.lwjgl.openal.ALC10;
 import org.lwjgl.openal.ALCCapabilities;
@@ -40,6 +42,7 @@ public class SoundManager
 	// Map of all sounds
 	public HashMap<String, SoundSource> allClips = new HashMap<String, SoundSource>();
 	public List<Integer> allBuffers = new ArrayList<Integer>();
+	private boolean distanceModelSet = false;
 
 
 	// -----------------------------------------------------------------------
@@ -80,6 +83,43 @@ public class SoundManager
 		}
 		ALC10.alcMakeContextCurrent(context);
 		AL.createCapabilities(deviceCaps);
+	}
+	
+	/**
+	 * Can only be applied ONCE.
+	 * 0 - Linear 
+	 * 1 - Exponential 
+	 * 2 - Inverse Distance 
+	 * 3 - Linear Distance Clamped
+	 * 4 - Exponential Distance Clamped
+	 * 5 - Inverse Distance Clamped
+	 */
+	public void setDistanceModel(int choice) {
+		
+		if(distanceModelSet == false) {
+			switch(choice) {
+			case 0:
+				AL10.alDistanceModel(AL11.AL_LINEAR_DISTANCE);
+				break;
+			case 1:
+				AL10.alDistanceModel(AL11.AL_EXPONENT_DISTANCE);
+			case 2:
+				AL10.alDistanceModel(AL11.AL_INVERSE_DISTANCE);
+			case 3:
+				AL10.alDistanceModel(AL11.AL_LINEAR_DISTANCE_CLAMPED);
+				break;
+			case 4:
+				AL10.alDistanceModel(AL11.AL_EXPONENT_DISTANCE_CLAMPED);
+				break;
+			case 5:
+				AL10.alDistanceModel(AL11.AL_INVERSE_DISTANCE_CLAMPED);
+				break;
+			
+			}
+			
+			distanceModelSet = true;
+		}
+	  
 	}
 	
 	/**
@@ -245,6 +285,8 @@ public class SoundManager
 		}
 		
 		allClips.get(otherTrack).play(); 
+		
+		
 	}
 	/**
 	 * Allows the clip to have a certain fade time, either depending on 
