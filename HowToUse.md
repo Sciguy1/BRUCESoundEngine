@@ -10,7 +10,8 @@ Example code from testClass:
     
   SoundLoader will load sources from a text file with the following format for each line in the text file: <trackName>, <resourcePath>, <canLoop>.
   Modify the game-tracks.txt file accordingly, as the files used in the demo video will or have been deleted from the repo.
-  You should add every .wav file you are going to use in your project early on, and later call the following at the termination of your game or engine: 
+  Playing, pausing, rewinding etc. can happen within your game loop. Additionally, you should add every .wav file 
+  you are going to use in your project early on, and later call the following at the termination of your game or engine: 
    
   soundManager.deleteAll(soundLoader.allSources);
   soundManager.cleanUp();
