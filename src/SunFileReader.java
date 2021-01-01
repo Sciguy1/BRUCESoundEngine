@@ -1,3 +1,4 @@
+package bruce.sound;
 
 /*
  * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.

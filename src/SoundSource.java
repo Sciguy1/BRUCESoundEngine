@@ -15,7 +15,7 @@ import org.lwjgl.openal.AL11;
  * 
  * @author Camron Hughes
  *
- *         Used the following tutorials as a base:
+ *         
  *
  */
 public class SoundSource

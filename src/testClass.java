@@ -1,3 +1,4 @@
+package bruce.sound;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,16 +47,17 @@ public class testClass
 			    break;
 			case 'i':
 				soundManager.swapPlaying("TSFH");
+				break;
 			 
 			 
 			}
 			
 		}
 
-		// NOTE:
-		// Issue with trying to close the OpenAL device for some reason?
-		// The cleanUp method should take care of this, but it seems this is not
-		// working or the warning won't go away?
+//		// NOTE:
+//		// Issue with trying to close the OpenAL device for some reason?
+//		// The cleanUp method should take care of this, but it seems this is not
+//		// working or the warning won't go away?
 		soundManager.deleteAll(soundLoader.allSources);
 		soundManager.cleanUp();
 

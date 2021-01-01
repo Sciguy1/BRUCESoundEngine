@@ -1,6 +1,6 @@
+package bruce.sound;
 
 import org.lwjgl.openal.AL10;
-import org.lwjgl.util.WaveData;
 
 /**
  * Specifically for longer audio files, OST's, etc.

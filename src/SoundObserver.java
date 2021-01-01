@@ -1,4 +1,4 @@
-
+package bruce.sound;
 
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
@@ -10,13 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Handles any action events specified in the game and will know when something in the gameWorld has
- * occured
+ * Handles any action events specified in the game and will know when something
+ * in the gameWorld has occurred
+ * 
  * @author Camron Hughes
  *
  */
-public class SoundObserver {
-
+public class SoundObserver
+{
+//TODO
 	/**
 	 * Link sound source (once initialized) to Entities within CheckEngine
 	 */

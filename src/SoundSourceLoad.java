@@ -1,3 +1,5 @@
+package bruce.sound;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -58,21 +60,21 @@ public class SoundSourceLoad
 
 		} catch (FileNotFoundException e)
 		{
-			
+
 			e.printStackTrace();
 		} catch (IOException e)
 		{
 
-			System.err.println("Unable to load sources from text file. Please check your resource path for your txt file.");
+			System.err.println(
+					"Unable to load sources from text file. Please check your resource path for your txt file.");
 			e.printStackTrace();
 		}
 
 	}
 
 	/**
-	 * Initializes any buffers needed for sound resources.
-	 * By default, all SoundSource do not loop, but can be changed on a
-	 * case by case basis later on.
+	 * Initializes any buffers needed for sound resources. By default, all
+	 * SoundSource do not loop, but can be changed on a case by case basis later on.
 	 */
 	private void instPath(String[] subLine)
 	{
@@ -82,20 +84,20 @@ public class SoundSourceLoad
 			// Can't do anything
 		} else
 		{
-			//TODO - Name should be unique for each track!
+			// TODO - Name should be unique for each track!
 			SoundSource currentSource = new SoundSource();
 
 			currentSource.setNameID(subLine[0]);
 
 			currentSource.setPath(subLine[1]);
 
-			if(subLine[2].equals("true")) {
+			if (subLine[2].equals("true"))
+			{
 				currentSource.setLooping(true);
-			}
-			else {
+			} else
+			{
 				currentSource.setLooping(false);
 			}
-			
 
 			allSources.add(currentSource);
 
@@ -115,16 +117,20 @@ public class SoundSourceLoad
 		{
 			resourcePaths.add(allSources.get(i).getPath());
 		}
-		
+
 		return resourcePaths;
 	}
 
+	/**
+	 * Provides info on all sources that have been loaded from the text file.
+	 */
 	public void info()
 	{
-	  System.out.println("Sound Loader information: ");
-      for(SoundSource s : allSources) {
-    	   System.out.println(s.toString());
-      }
+		System.out.println("Sound Loader information: ");
+		for (SoundSource s : allSources)
+		{
+			System.out.println(s.toString());
+		}
 	}
 
 }
