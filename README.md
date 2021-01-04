@@ -2,6 +2,8 @@
  **Still developing and in its rough stages**
  
   A minimal sound engine that can be used in homebrew games/engines. Uses LWJGL 3.x and parts of 2.x for ease of use with OpenAL.
+  Note: Not all .wav files will work. It is best to use .wav files that have a bitrate of around 352kbps, 512kbps, and 1411 kbps. It is known that
+  23024 kbps will NOT work.
 
 # Updates:
 
