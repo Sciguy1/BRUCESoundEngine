@@ -1,8 +1,8 @@
 Example Test File:
 
-TSFH, \\track-resources\\TSFH.wav, true
-Forbidden_Friendship, \\track-resources\\ForbiddenFriendship-mono.wav, true
-Megolovania, \\track-resources\\Undertale-Megolovania-Mono.wav, true
-American_Dream, \\track-resources\\02 - Prologue.wav, true
-Anticipation, \\track-resources\\04 - Anticipation & Excitement.wav, true
-All_Hands_On_Deck, \\track-resources\\05 - All Hands on Deck.wav, true
+TSFH, /track-resources/TSFH.wav, true
+Forbidden_Friendship, /track-resources/ForbiddenFriendship-mono.wav, true
+Megolovania, /track-resources/Undertale-Megolovania-Mono.wav, true
+American_Dream, /track-resources/02 - Prologue.wav, true
+Anticipation, /track-resources/04 - Anticipation & Excitement.wav, true
+All_Hands_On_Deck, /track-resources/05 - All Hands on Deck.wav, true
