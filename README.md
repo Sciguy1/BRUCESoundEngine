@@ -16,7 +16,7 @@ https://lwjglgamedev.gitbooks.io/3d-game-development-with-lwjgl/content/chapter2
 
 https://www.youtube.com/watch?v=BR8KjNkYURk
 
-https://github.com/Rishikeshdaoo/Reverberator (Will come later)
+https://github.com/Rishikeshdaoo/Reverberator (Will/may come later)
 
 
 Demo: 
