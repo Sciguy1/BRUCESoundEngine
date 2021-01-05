@@ -153,7 +153,7 @@ public class SoundManager
 		allBuffers.add(buffer);
 		WaveData waveFile = WaveData.create(resourcePath);
 		AL10.alBufferData(buffer, waveFile.format, waveFile.data, waveFile.samplerate);
-		System.out.println("Current path to .wav : " + resourcePath + " \n Sample Rate : " + waveFile.samplerate);
+		//System.out.println("Current path to .wav : " + resourcePath + " \n Sample Rate : " + waveFile.samplerate);
 		waveFile.dispose();
 		return buffer;
 	}
