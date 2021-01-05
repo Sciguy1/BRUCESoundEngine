@@ -1,4 +1,4 @@
-# How to Use
+# How To Use
 
 
 Example code from testClass:
