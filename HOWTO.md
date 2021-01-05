@@ -22,7 +22,7 @@ Example code from testClass:
   
   (Will try to fix this problem soon with either Maven or something similar)
   
-   Important Reference libraries/jars to include in your build path:
+   Important Reference libraries/jars to (possibly) include in your build path. They should be included in the .jar release, but just in case:
    
     lwjgl.jar
     lwjgl-natives-windows.jar (or whatever your OS might be)
