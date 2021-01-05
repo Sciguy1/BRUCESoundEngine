@@ -1,4 +1,5 @@
 package bruce.sound;
+//Note: You will need the LWJGL to run this example and the .wav files are not included. Replace them accordingly, as explained in the HOWTO.md
 
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
