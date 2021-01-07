@@ -153,7 +153,7 @@ public class SoundManager
 		allBuffers.add(buffer);
 		WaveData waveFile = WaveData.create(resourcePath);
 		AL10.alBufferData(buffer, waveFile.format, waveFile.data, waveFile.samplerate);
-		//System.out.println("Current path to .wav : " + resourcePath + " \n Sample Rate : " + waveFile.samplerate);
+		System.out.println("Current path to .wav : " + resourcePath + " \n Sample Rate : " + waveFile.samplerate);
 		waveFile.dispose();
 		return buffer;
 	}
@@ -200,6 +200,9 @@ public class SoundManager
 			allClips.put(s.getNameID(), s);
 		}
 	}
+	
+
+
 
 	/**
 	 * Will clear the buffers and destroy ALC at the end. Note: Should *always* be
@@ -306,6 +309,27 @@ public class SoundManager
 		allClips.get(otherTrack).play();
 
 	}
+	
+	/**
+	 * Mutes a clip (sets volume to 0), but does not stop playing, if 
+	 * the clip is still playing in the background
+	 * @param level
+	 */
+	public void muteClip(String nameID) {
+		allClips.get(nameID).setVolume(0);
+	}
+	
+	/**
+	 * Sets the gain/volume of all sources (SFX, OST, etc.)
+	 * @param level
+	 */
+	public void setVolumeAll(float level) {
+		for (SoundSource s : allClips.values())
+		{
+		   s.setVolume(level);
+		}	
+	}
+	
 
 	/**
 	 * Allows the clip to have a certain fade time, either depending on the distance
