@@ -9,7 +9,7 @@
 
   12-30-2020 - A jar file for library integration will be coming soon.
   
-  1-1-2020 - First rough, operational jar released (see [releases](https://github.com/Sciguy1/BRUCESoundEngine/releases)), deleted .wav files.
+  1-1-2021 - First rough, operational jar released (see [releases](https://github.com/Sciguy1/BRUCESoundEngine/releases)), deleted .wav files.
   
 
 Sources Used:
