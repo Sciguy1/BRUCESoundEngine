@@ -2,8 +2,9 @@
 
 
 Example code from testClass:
-  	SoundManager soundManager = new SoundManager();
-  	soundManager.setup();
+
+    SoundManager soundManager = new SoundManager();
+    soundManager.setup();
   	SoundSourceLoad soundLoader = new SoundSourceLoad();
   	soundLoader.loadPaths("src\\game-tracks.txt");
   	soundManager.setSources(soundLoader.extractPaths(), soundLoader.allSources);
