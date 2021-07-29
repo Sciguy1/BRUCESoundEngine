@@ -14,8 +14,8 @@ Example code from testClass:
   Playing, pausing, rewinding etc. can happen within your game loop. Additionally, you should add every .wav file 
   you are going to use in your project early on, and later call the following at the termination of your game or engine: 
    
-  soundManager.deleteAll(soundLoader.allSources);
-  soundManager.cleanUp();
+    soundManager.deleteAll(soundLoader.allSources);
+    soundManager.cleanUp();
     
   These need to be called to "flush out" any additional resources, buffers, etc. OpenAL might be using/handling.
   (There is a warning that pops up right now, but ignore it for now.)
