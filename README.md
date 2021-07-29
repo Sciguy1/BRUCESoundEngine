@@ -6,6 +6,7 @@
   23024 kbps (4800 sample rate) will NOT work.
 
 # Updates:
+  7-29-2020 - Cateogorize OST and SFX wav Files
 
   12-30-2020 - A jar file for library integration will be coming soon.
   
