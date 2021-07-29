@@ -15,7 +15,7 @@ import org.lwjgl.openal.AL11;
  * 
  * @author Camron Hughes
  *
- *         
+ *         Used the following tutorials as a base:
  *
  */
 public class SoundSource
@@ -26,9 +26,12 @@ public class SoundSource
 	private String soundName;
 	public String resourcePath;
 
+	private boolean canPan;
+	
 	public boolean isPlaying;
 	private boolean canFade = false;
 	private boolean isLooping = false;
+	private boolean isSFX = true; // SFX when true, OST when false.
 
 	private boolean hasAttenuation = false;
 
@@ -40,6 +43,16 @@ public class SoundSource
 	public boolean isLooping()
 	{
 		return isLooping;
+	}
+
+	public boolean isSFX()
+	{
+		return isSFX;
+	}
+
+	public void setSFX(boolean isSFX)
+	{
+		this.isSFX = isSFX;
 	}
 
 	public SoundSource()
@@ -151,7 +164,8 @@ public class SoundSource
 
 	/**
 	 * Can set the position of where the source is being played (left or right) with
-	 * the z being the in-between (going from either left to right or the other way).
+	 * the z being the in-between (going from either left to right or the other
+	 * way).
 	 * 
 	 * @param x
 	 * @param y
@@ -184,8 +198,6 @@ public class SoundSource
 	{
 		AL10.alSource3f(sourceID, AL10.AL_VELOCITY, x, y, z);
 	}
-	
-	
 
 	/**
 	 * All initial defaults for the sound source are set here: gain 1, pitch 1 and
@@ -205,7 +217,7 @@ public class SoundSource
 	 */
 	public void setPitch(float pitch)
 	{
-		AL10.alSourcef(sourceID, AL10.AL_PITCH, 1);
+		AL10.alSourcef(sourceID, AL10.AL_PITCH, pitch);
 	}
 
 	/**
@@ -229,30 +241,53 @@ public class SoundSource
 	}
 
 	/**
-	 * If the attenuation model has been set with SoundManager and the source
-	 * has been set up to accept attenuation, (affects gain of the source), 
-	 * then the following can be applied to the source:
-	 *  
-	 * @param rollOffFactor - determines how quickly the gain decreases as distance increases.
-	 *  (No attenuation means setting rollOffFactor to 0)
+	 * If the attenuation model has been set with SoundManager and the source has
+	 * been set up to accept attenuation, (affects gain of the source), then the
+	 * following can be applied to the source:
+	 * 
+	 * @param rollOffFactor     - determines how quickly the gain decreases as
+	 *                          distance increases. (No attenuation means setting
+	 *                          rollOffFactor to 0)
 	 * @param referenceDistance - distance at which the gain will equal 1
-	 * @param maxDistance - distance that the source stops being heard
+	 * @param maxDistance       - distance that the source stops being heard
 	 * 
-	 * Can use this to "fade in" or "fade out" sources with a time factor, along with the elapse.
+	 *                          Can use this to "fade in" or "fade out" sources with
+	 *                          a time factor, along with the elapse.
 	 * 
-	 * Again, this works best with mono sound files/sources.
+	 *                          Again, this works best with mono sound
+	 *                          files/sources.
 	 */
-	public void distanceAttenuation(int rollOffFactor, int referenceDistance, int maxDistance) {
-		
-		if(hasAttenuation) {
-			 AL10.alSourcef(sourceID, AL10.AL_ROLLOFF_FACTOR, rollOffFactor);
-		     AL10.alSourcef(sourceID, AL10.AL_REFERENCE_DISTANCE, referenceDistance);
-		     AL10.alSourcef(sourceID, AL10.AL_MAX_DISTANCE, maxDistance);
+	public void distanceAttenuation(float rollOffFactor, float referenceDistance, float maxDistance)
+	{
+
+		if (hasAttenuation)
+		{
+			AL10.alSourcef(sourceID, AL10.AL_ROLLOFF_FACTOR, rollOffFactor);
+			AL10.alSourcef(sourceID, AL10.AL_REFERENCE_DISTANCE, referenceDistance);
+			AL10.alSourcef(sourceID, AL10.AL_MAX_DISTANCE, maxDistance);
 		}
 
-	    
+	}
+	
+	/**
+	 * Sets whether or not the source is able to pan (left or right)
+	 * @param willPan
+	 */
+	public void setPanning(boolean willPan) {
+		//Based on listeners position as default//
+		AL11.alSourcei(sourceID,AL10.AL_SOURCE_RELATIVE, willPan ? AL10.AL_TRUE : AL10.AL_FALSE);
+		this.canPan = willPan;
 	}
 
+	
+	/**
+	 * Determines if the source is able to pan or not
+	 * @param willPan
+	 */
+	public void getPanning(boolean willPan) {
+		//Based on listeners position as default//
+		AL11.alGetSourcei(sourceID, AL10.AL_SOURCE_RELATIVE);
+	}
 	/**
 	 * Sets the resourcePath for the source. Should only be used sparingly.
 	 * 

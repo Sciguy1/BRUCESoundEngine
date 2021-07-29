@@ -1,5 +1,7 @@
 package bruce.sound;
 
+
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,10 +29,10 @@ public class SoundSourceLoad
 	 * Will load source paths from .txt file into an ArrayList of resourcePaths,
 	 * then we can set properties for each track file within the there after Should
 	 * only be called once!
-	 * 
+	 * SoundType is OST or SFX, Loop is true or false.
 	 * Format <NAME>, <PATH>
 	 * 
-	 * Later : <NAME> <PATH> <SOUNDTYPE> <FADE>
+	 * Later : <NAME> <PATH> <SOUNDTYPE>, <LOOP> (true or false)
 	 */
 	public void loadPaths(String textFile)
 	{
@@ -86,20 +88,35 @@ public class SoundSourceLoad
 		{
 			// TODO - Name should be unique for each track!
 			SoundSource currentSource = new SoundSource();
+			
+		     
 
 			currentSource.setNameID(subLine[0]);
 
 			currentSource.setPath(subLine[1]);
 
-			if (subLine[2].equals("true"))
-			{
-				currentSource.setLooping(true);
-			} else
-			{
-				currentSource.setLooping(false);
+			
+			if(subLine[2].equals("SFX")) {
+				currentSource.setSFX(true);
 			}
+			else if(subLine[2].equals("OST")) {
+				currentSource.setSFX(false);
+			}
+			
+			if(subLine.length > 3) {
+				
+				if (subLine[3].equals("true"))
+				{
+					currentSource.setLooping(true);
+				} else
+				{
+					currentSource.setLooping(false);
+				}
+				
 
-			allSources.add(currentSource);
+				allSources.add(currentSource);
+			}
+			
 
 		}
 

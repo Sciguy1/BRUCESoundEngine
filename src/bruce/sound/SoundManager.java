@@ -14,19 +14,15 @@ import org.lwjgl.openal.ALC;
 import org.lwjgl.openal.ALC10;
 import org.lwjgl.openal.ALCCapabilities;
 
-///
 /**
- * Allows the use of names to play certain sound sources with OpenAL. 
- * Should only have one instance of this.
+ * Allows the use of names to play certain sound sources with OpenAL. Should
+ * only have one instance of this.
  * 
  * @author Camron Hughes
  * 
  *         The order in which the methods are placed matters, otherwise it may
- *         crash or yield undefined behavior: 
- *         1. setup() 
- *         2. initSoundMap(<allSources>) 
- *         3. setBufferList() 
- *         4. place()
+ *         crash or yield undefined behavior: 1. setup() 2.
+ *         initSoundMap(<allSources>) 3. setBufferList() 4. place()
  * 
  *         OR setSources(<resourcePaths>, <allSources>) will do all three
  * 
@@ -85,13 +81,8 @@ public class SoundManager
 	}
 
 	/**
-	 * Can only be applied ONCE. 
-	 * 0 - Linear 
-	 * 1 - Exponential 
-	 * 2 - Inverse Distance 
-	 * 3 - Linear Distance Clamped 
-	 * 4 - Exponential Distance Clamped 
-	 * 5 - Inverse Distance
+	 * Can only be applied ONCE. 0 - Linear 1 - Exponential 2 - Inverse Distance 3 -
+	 * Linear Distance Clamped 4 - Exponential Distance Clamped 5 - Inverse Distance
 	 * Clamped
 	 */
 	public void setDistanceModel(int choice)
@@ -150,10 +141,8 @@ public class SoundManager
 	public int loadSound(String resourcePath)
 	{
 		int buffer = AL10.alGenBuffers();
-		allBuffers.add(buffer);
 		WaveData waveFile = WaveData.create(resourcePath);
 		AL10.alBufferData(buffer, waveFile.format, waveFile.data, waveFile.samplerate);
-		System.out.println("Current path to .wav : " + resourcePath + " \n Sample Rate : " + waveFile.samplerate);
 		waveFile.dispose();
 		return buffer;
 	}
@@ -200,9 +189,6 @@ public class SoundManager
 			allClips.put(s.getNameID(), s);
 		}
 	}
-	
-
-
 
 	/**
 	 * Will clear the buffers and destroy ALC at the end. Note: Should *always* be
@@ -309,27 +295,98 @@ public class SoundManager
 		allClips.get(otherTrack).play();
 
 	}
-	
+
 	/**
-	 * Mutes a clip (sets volume to 0), but does not stop playing, if 
-	 * the clip is still playing in the background
+	 * Mutes a clip (sets volume to 0), but does not stop playing, if the clip is
+	 * still playing in the background.
+	 * 
 	 * @param level
 	 */
-	public void muteClip(String nameID) {
+	public void muteClip(String nameID)
+	{
 		allClips.get(nameID).setVolume(0);
 	}
-	
+
 	/**
 	 * Sets the gain/volume of all sources (SFX, OST, etc.)
+	 * 
 	 * @param level
 	 */
-	public void setVolumeAll(float level) {
+	public void setVolumeAll(float level)
+	{
 		for (SoundSource s : allClips.values())
 		{
-		   s.setVolume(level);
-		}	
+			s.setVolume(level);
+		}
 	}
-	
+
+	/**
+	 * Sets volume of all registered SFX clips.
+	 * 
+	 * @param level
+	 */
+	public void setSFXVolume(float level)
+	{
+		for (SoundSource s : allClips.values())
+		{
+			if (s.isSFX())
+			{
+				s.setVolume(level);
+			}
+		}
+	}
+
+	/**
+	 * Sets volume of all registered OST clips.
+	 * 
+	 * @param level
+	 */
+	public void setOSTVolume(float level)
+	{
+		for (SoundSource s : allClips.values())
+		{
+			if (s.isSFX() == false)
+			{
+				s.setVolume(level);
+			}
+		}
+	}
+
+	/**
+	 * Gets the list of all registered OST clips.
+	 * 
+	 * @return
+	 */
+	public List<SoundSource> getSFXClips()
+	{
+		List<SoundSource> sfxClips = new ArrayList<SoundSource>();
+		for (SoundSource s : allClips.values())
+		{
+			if (s.isSFX())
+			{
+				sfxClips.add(s);
+			}
+		}
+		return sfxClips;
+	}
+
+	/**
+	 * Gets the list of all registered OST clips.
+	 * 
+	 * @return
+	 */
+	public List<SoundSource> getOSTClips()
+	{
+		List<SoundSource> ostClips = new ArrayList<SoundSource>();
+		for (SoundSource s : allClips.values())
+		{
+			if (s.isSFX() == false)
+			{
+				ostClips.add(s);
+			}
+		}
+		return ostClips;
+	}
 
 	/**
 	 * Allows the clip to have a certain fade time, either depending on the distance
@@ -339,7 +396,7 @@ public class SoundManager
 	 */
 	public void setFadeClip(String name)
 	{
-
+		// TODO
 	}
 
 	/**
