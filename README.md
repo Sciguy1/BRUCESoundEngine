@@ -6,7 +6,7 @@
   23024 kbps (4800 sample rate) will NOT work.
 
 # Updates:
-  7-29-2020 - Cateogorize OST and SFX wav Files
+  7-29-2020 - Cateogorize OST and SFX wav Files, still need to fix weird .jar file exporting and project troubles. ALC10 being called a class that eclipse can't find. Some dependancy or something else is screwing with this.
 
   12-30-2020 - A jar file for library integration will be coming soon.
   
